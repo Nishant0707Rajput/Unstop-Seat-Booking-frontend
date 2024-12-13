@@ -74,6 +74,8 @@ export class SeatsComponent implements OnInit {
       next: (res) => {
         this.profileForm.reset();
         this.getAllSeatsInfo();
+        this.toastr.info('Seats booked successfully!');
+        this.formSubmitted = false;
         this.lockSubmitButton = false;
       },
       error: (err) => {
@@ -90,6 +92,7 @@ export class SeatsComponent implements OnInit {
       next: (res) => {
         this.lockSubmitButton = false;
         this.getAllSeatsInfo();
+        this.toastr.info('Seats has been reset!');
       },
       error: (err) => {
         this.lockSubmitButton = false;
