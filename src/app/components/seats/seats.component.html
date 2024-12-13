@@ -1,0 +1,45 @@
+
+<div>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="name">Name:</label>
+          <input id="name" formControlName="name" />
+          @if(formSubmitted && f['name'].errors){
+    
+              <div >
+                @if(f['name'].hasError('required')){
+                    <small>Name is required.</small>
+                }
+                @if(f['name'].hasError('minlength')){
+                    <small >Name must be at least 3 characters long.</small>
+                }
+                @if(f['name'].hasError('maxlength')){
+                    <small >Name cannot exceed 50 characters.</small>
+                }
+              </div>
+          }
+        </div>
+      
+        <div>
+          <label for="noOfSeats">Number of Seats:</label>
+          <input id="noOfSeats" formControlName="noOfSeats" type="number" />
+          @if(formSubmitted && f['noOfSeats'].errors){
+              <div >
+                @if(f['noOfSeats'].hasError('required')){
+                    <small >Number of seats is required.</small>
+                }
+                @if(f['noOfSeats'].hasError('min')){
+                    <small >Number of seats must be at least 1.</small>
+                }
+                @if(f['noOfSeats'].hasError('max')){
+                    <small >Number of seats cannot exceed 80.</small>
+                }
+              </div>
+          }
+        </div>
+      
+        <button type="submit" [disabled]="profileForm.invalid">Submit</button>
+      </form>
+</div>
+
+  
