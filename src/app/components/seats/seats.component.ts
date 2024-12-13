@@ -20,6 +20,7 @@ export class SeatsComponent implements OnInit {
   profileForm!: FormGroup;
   lockSubmitButton = false;
   formSubmitted = false;
+  responseAvailable = false;
 
   constructor(private httpService: HttpService, private toastr:ToastrService) {}
   seats: any = [];
@@ -47,6 +48,7 @@ export class SeatsComponent implements OnInit {
     this.httpService.get('seat', {}).subscribe({
       next: (res: any) => {
         this.seats = Object.entries(res.seats);
+        this.responseAvailable = true;
       },
       error:(err)=>{
         this.toastr.error(err.error.message);

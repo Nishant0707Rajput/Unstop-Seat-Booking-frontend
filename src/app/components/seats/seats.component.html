@@ -18,6 +18,9 @@
                 Reset Bookings
             </button>
         </div>
+        @if(!responseAvailable){
+            <div class="row"><img src="assets/loading.gif" alt=""></div>
+        }
         @for (row of seats; track row) {
         <div class="row">
             @for( seat of row[1]; track seat){
